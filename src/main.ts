@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import { swaggerConfig } from './utils/swagger';
 import { UserModule } from './user-module/user.module';
 import { AuthModule } from './auth-module/auth.module';
+import { DocumentModule } from './document-module/document.module';
 
 async function bootstrap() {
   const logger = new Logger(bootstrap.name);
@@ -24,6 +25,14 @@ async function bootstrap() {
     app,
     name: 'auth',
     module: AuthModule,
+    server: {
+      service: swaggerService,
+    },
+  });
+  swaggerConfig({
+    app,
+    name: 'document',
+    module: DocumentModule,
     server: {
       service: swaggerService,
     },

@@ -5,6 +5,7 @@ import { Env } from './utils';
 import { UserModule } from './user-module/user.module';
 import { AuthModule } from './auth-module/auth.module';
 import { RedisModule } from './utils/redis/redis.module';
+import { DocumentModule } from './document-module/document.module';
 
 export const mongooseConfigFactory = async (configService: ConfigService) => ({
   uri:
@@ -40,6 +41,7 @@ export const mongooseConfigFactory = async (configService: ConfigService) => ({
       useFactory: async (configService: ConfigService) => ({}),
     }),
     AuthModule,
+    DocumentModule,
     RedisModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
